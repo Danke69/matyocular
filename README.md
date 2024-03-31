@@ -1,4 +1,4 @@
-# サイト名　Matyocular
+# 　Matyocular
 ​
 ## サイト概要
 ### サイトテーマ

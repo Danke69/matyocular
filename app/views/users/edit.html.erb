@@ -1,5 +1,5 @@
 <%= form_with model: @user do |f| %>
-  <label for="Name">ユーザーネーム</label>
+  <%= f.label :name %>
   <%= f.text_field :name, id:"Name" %>
 
   <label for="profile">profile</label>
@@ -9,7 +9,7 @@
   <%= f.text_area :introduction, id:"intro" %>
 
   <label for="goal">目標</label>
-  <%= f.text_area :goal, id:"goal" %>
+  <%= f.text_area :goal, id:"goal<%=" %>
 
   <%= f.submit 'いっきまーす!' %>
 <% end %>

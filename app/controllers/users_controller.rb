@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post = @user.post
+    @posts = @user.posts
   end
 
   def edit
@@ -10,9 +10,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @uesr = User.find(params[:id])
+    @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_path(@user.id)
+    redirect_to user_path(@user.id)
   end
 
   def destroy
@@ -21,6 +21,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :goal)
+    params.require(:user).permit(:name, :introduction, :goal, :profile_image)
   end
 end

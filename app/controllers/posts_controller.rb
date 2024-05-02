@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    @user = @post.user
   end
 
   def new
@@ -8,21 +9,26 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
-    @post.user_id = current_user
-    @post.save!
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    @post.save
     redirect_to posts_path
   end
 
   def show
+    @user = @post.user
   end
 
   def destroy
+    post = Post.find(params[:id])
+    user = post.user
+    post.destroy
+    redirect_to user_path(user)
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:post)
+    params.require(:post).permit(:body)
   end
 end

@@ -9,7 +9,10 @@
 
 <% @posts.each do |post| %>
   <p>ユーザーネーム:<%= post.user.name %></p>
-  <p><% post.text %></p>
+  <p><%= post.body %></p>
+  <% if @user == current_user %>
+    <%= button_to "削除", post_path(post), method: :delete %>
+  <% end %>
 <% end %>
 
 <%= link_to "投稿する", new_post_path %>

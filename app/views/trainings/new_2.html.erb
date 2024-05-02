@@ -1,0 +1,10 @@
+<%= form_with model: @training, url: trainings_path do |f| %>
+  <%= f.text_field :training_date %>
+  <%= f.collection_select :training_menu_id, @menus, :id, :item, {}, {} %>
+  <%= f.hidden_field :list_id %>
+  <%= f.submit "追加" %>
+<% end %>
+
+<%= link_to "部位の追加", new_list_path %>
+<%= link_to "種目の追加", training_menus_new_path %>
+

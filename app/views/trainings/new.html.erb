@@ -1,2 +1,10 @@
-<h1>Trainings#new</h1>
-<p>Find me in app/views/trainings/new.html.erb</p>
+<%= form_with model: @training, url: trainings_new_2_path do |f| %>
+
+  <%= f.collection_select :list_id, @lists, :id, :part, {}, {} %>
+  <%= f.submit "次へ" %>
+<% end %>
+
+<%= link_to "部位の追加", new_list_path %>
+<%= link_to "種目の追加", training_menus_new_path %>
+
+

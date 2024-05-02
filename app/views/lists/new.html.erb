@@ -1,0 +1,4 @@
+<%= form_with model: @list do |f| %>
+  <p>部位:<%= f.text_field :part %></p>
+  <%= f.submit "追加" %>
+<% end %>

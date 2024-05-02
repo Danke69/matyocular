@@ -1,2 +1,15 @@
-<h1>Trainings#show</h1>
-<p>Find me in app/views/trainings/show.html.erb</p>
+
+<% @trainings.each do |training| %>
+  
+  <p>トレーニング日:<%= training.training_date %></p>
+  <p>部位:<%= training.part %></p>
+    <%= form_with model: @training do |f| %>
+      <p>重量:<%= f.number_field :weight %></p>
+      <p>回数:<%= f.number_field :body %></p>
+    <% end %>
+  <%= button_to "削除" ,training_path(training), method: :delete %>
+<% end %>
+
+<%= link_to "種目を追加", new_training_path %>
+
+<%= link_to "履歴", trainings_path %>

@@ -1,7 +1,7 @@
 class CreateLists < ActiveRecord::Migration[6.1]
   def change
     create_table :lists do |t|
-      t.string :part
+      t.string :part, null: false
       t.timestamps
     end
   end

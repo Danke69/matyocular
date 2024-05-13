@@ -8,7 +8,6 @@
 </div>
 
 <% @posts.each do |post| %>
-  <p>ユーザーネーム:<%= post.user.name %></p>
   <p><%= post.body %></p>
   <% if @user == current_user %>
     <%= button_to "削除", post_path(post), method: :delete %>

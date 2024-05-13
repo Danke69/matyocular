@@ -13,7 +13,7 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && !admin_signed_in? %>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
@@ -24,12 +24,19 @@
           <%= link_to "目標設定", edit_user_path(current_user) %>
         </li>
         <li>
-          <%= link_to "筋トレ", training_path(current_user) %>
+          <%= link_to "トレーニング", new_training_path %>
+        </li>
+        <li>
+          <%= link_to "筋トレ一覧", trainings_path %>
         </li>
         <li>
           <%= link_to "投稿一覧", posts_path %>
         </li>
-      <% end %>
+        <% else %>
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+        <% end %>
     </header>
     <%= yield %>
   </body>

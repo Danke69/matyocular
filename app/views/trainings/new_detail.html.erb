@@ -1,0 +1,11 @@
+<p>トレーニング日:<%= @training.training_date %></p>
+<p>部位:<%= @training.part %></p>
+<p>種目:<%= @training.item %></p>
+<%= form_with model: @training, url: trainings_path, method: :post do |f| %>
+  <%= f.hidden_field :training_date %>
+  <%= f.hidden_field :training_menu_id %>
+  <%= f.hidden_field :list_id %>
+  <p>重量:<%= f.number_field :weight %></p>
+  <p>回数:<%= f.number_field :body %></p>
+  <p><%= f.submit "追加" %></p>
+<% end %>

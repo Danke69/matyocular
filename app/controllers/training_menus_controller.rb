@@ -7,10 +7,13 @@ class TrainingMenusController < ApplicationController
   def create
     @menu = TrainingMenu.new(training_menu_params)
     @menu.save
-    redirect_to new_training_path
+    redirect_to trainings_path
   end
 
   def destroy
+    training = TrainingMenu.find(params[:id])
+    training.destroy
+    redirect_to trainings_path
   end
 
   def show

@@ -13,13 +13,13 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.save
-    redirect_to new_training_path
+    redirect_to new_training_menu_path
   end
 
   def destroy
-    list = List.fien(params[:id])
+    list = List.find(params[:id])
     list.destroy
-    redirect_to new_list_path
+    redirect_to trainings_path
   end
 
   private

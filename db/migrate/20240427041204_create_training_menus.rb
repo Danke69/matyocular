@@ -3,7 +3,7 @@ class CreateTrainingMenus < ActiveRecord::Migration[6.1]
     create_table :training_menus do |t|
       t.string :item
       t.timestamps
-      t.integer :list_id
+      t.integer :list_id, null: false
     end
   end
 end

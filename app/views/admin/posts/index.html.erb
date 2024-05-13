@@ -1,0 +1,11 @@
+<h1>投稿一覧</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <%= user.name %>
+    <% user.posts.each do |f| %>
+      <%= f.body %>
+      <%= link_to '削除', admin_post_path(f), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    <% end %>
+  <% end %>
+</ul>

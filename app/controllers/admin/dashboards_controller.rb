@@ -1,19 +1,11 @@
 class Admin::DashboardsController < ApplicationController
   layout 'admin'
   before_action :authenticate_admin!
-  
-  def show
-    
-  end
 
   def index
     @users = User.all
   end
 
-  def index_2
-    @posts = Post.all
-    @users = User.all
-  end
 
   def new
     @list = List.new

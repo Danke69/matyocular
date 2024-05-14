@@ -7,16 +7,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:destroy, :show, :index]
     resources :posts, only: [:destroy, :index]
-    resources :dashboards, only: [:index, :create, :show]
-    resources :trainings, only: [:create]do
-      collection do
-        get :new_list
-        post :new_list
-        get :new_menu
-        post :new_menu
-      end
-    end
-
+    resources :dashboards, only: [:index, :create,]
+    resources :training_lists, only: [:new, :create]
+    resources :training_menus, only: [:new, :create]
   end
 
   devise_for :users, controllers: {

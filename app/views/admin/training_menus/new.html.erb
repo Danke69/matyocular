@@ -1,0 +1,5 @@
+<%= form_with model: @menu, url: admin_training_menus_path do |f| %>
+  <%= f.collection_select :list_id, @lists, :id, :part, {}, {} %>
+  <p>種目:<%= f.text_field :item %></p>
+  <%= f.submit "作成" %>
+<% end %>

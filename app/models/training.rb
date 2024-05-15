@@ -6,7 +6,9 @@ class Training < ApplicationRecord
   def part
     list.part
   end
+  
   def item
     training_menu.item
   end
+  
 end

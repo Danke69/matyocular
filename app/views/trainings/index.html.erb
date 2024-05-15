@@ -1,34 +1,56 @@
+
 <h3>トレーニング一覧</h3>
-
-
-<% current_user.trainings.each_with_index do |training,idx| %>
-<% if idx == 0 %>
-  <%= l training.training_date %>
-<% end %>
-  <%= link_to "変更", training_path(training) %>
-<% end %>
-
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <% current_user.trainings.each_with_index do |training,idx| %>
+        <% if idx == 0 %>
+          <%= l training.training_date %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to "変更", training_path(training) %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <h3>トレーニングメニュー一覧</h3>
 
-<% @lists.each do |list| %>
-
-  <%= list.part %>
-  <%=link_to "削除", list_path(list), method: :delete %>
-
-  <% list.training_menus.each do |menu| %>
-    <%= menu.item %>
-    <%#= link_to "鍛える", new_3_trainings_path %>
-    <%= form_with model: @training, url: new_detail_trainings_path do |f| %>
-      <%= f.hidden_field :training_date, value: Date.current %>
-      <%= f.hidden_field :training_menu_id, value: menu.id %>
-      <%= f.hidden_field :list_id %>
-      <%= f.submit "鍛える" %>
-    <% end %>
-    <%= link_to "削除", training_menu_path(menu), method: :delete %>
+<table class="table">
+  <% @lists.each do |list| %>
+    <thead>
+      <tr>
+        <th>
+          <h4><%= list.part %></h4>
+          <%= button_to "削除", list_path(list), method: :delete %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <% list.training_menus.each do |menu| %>
+            <%= menu.item %>
+            <%= form_with model: @training, url: new_detail_trainings_path do |f| %>
+              <%= f.hidden_field :training_date, value: Date.current %>
+              <%= f.hidden_field :training_menu_id, value: menu.id %>
+              <%= f.hidden_field :list_id, value: list.id %>
+              <%= f.submit "鍛える" %>
+            <% end %>
+            <%= button_to "削除", training_menu_path(menu), method: :delete %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
   <% end %>
-
-<% end %>
+</table>
 
 <%= link_to "部位の追加", new_list_path %>
 <%= link_to "種目の追加", new_training_menu_path %>

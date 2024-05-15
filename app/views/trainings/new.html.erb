@@ -1,9 +1,20 @@
-<%= form_with model: @training, url: new_menu_trainings_path do |f| %>
-  <%= f.collection_select :list_id, @lists, :id, :part, {}, {} %>
-  <%= f.submit "次へ" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 pt-5 mx-auto">
+      <%= form_with model: @training, url: new_menu_trainings_path do |f| %>
+        <div class="form-group">
+          <p>種目選択</p>
+          <%= f.collection_select :list_id, @lists, :id, :part, {}, {} %>
+          <%= f.submit "次へ" %>          
+        </div>
+      <% end %>
+      <div class="col"><%= link_to "部位の追加", new_list_path %></div>
+      <div class="col"><%= link_to "種目の追加", new_training_menu_path %></div>
+      <div class="col"><%= link_to "一覧", trainings_path %></div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "部位の追加", new_list_path %>
-<%= link_to "種目の追加", new_training_menu_path %>
-<%= link_to "一覧", trainings_path %>
+
+
 

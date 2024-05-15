@@ -1,6 +1,15 @@
-<% @posts.each do |post| %>
-  <%= link_to post.user.name, user_path(post.user) %>
-  <%= post.body %>
-<% end %>
-
 <%= link_to "投稿する", new_post_path %>
+
+<table>
+  <% @posts.each do |post| %>
+    <tbody>
+      <tr>
+        <th><%= link_to post.user.name, user_path(post.user) %></th>
+        <td><%= post.body %></td>
+      </tr>
+    </tbody>
+  <% end %>  
+</table>
+
+
+

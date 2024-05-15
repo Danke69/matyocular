@@ -1,15 +1,21 @@
+<div calss="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 pt-5 mx-auto">
+      <p>トレーニング日:<%= @training.training_date %></p>
+      <p>部位:<%= @training.part %></p>
+      <p>種目:<%= @training.item %></p>
+        <%= form_with model: @training, url: training_path(@training), method: :patch do |f| %>
+          <p>重量:<%= f.number_field :weight %></p>
+          <p>回数:<%= f.number_field :body %></p>
+          <p><%= f.submit "更新" %></p>
+        <% end %>
+        <%= button_to "削除" ,training_path(@training), method: :delete %>
+    </div>
+  </div>
+</div>
 
 
-<p>トレーニング日:<%= @training.training_date %></p>
-<p>部位:<%= @training.part %></p>
-<p>種目:<%= @training.item %></p>
-  <%= form_with model: @training, url: training_path(@training), method: :patch do |f| %>
-    <p>重量:<%= f.number_field :weight %></p>
-    <p>回数:<%= f.number_field :body %></p>
-    <p><%= f.submit "追加" %></p>
-  <% end %>
 
-<%= button_to "削除" ,training_path(@training), method: :delete %>
 
 
 

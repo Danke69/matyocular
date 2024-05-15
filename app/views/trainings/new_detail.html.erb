@@ -1,11 +1,17 @@
-<p>トレーニング日:<%= @training.training_date %></p>
-<p>部位:<%= @training.part %></p>
-<p>種目:<%= @training.item %></p>
-<%= form_with model: @training, url: trainings_path, method: :post do |f| %>
-  <%= f.hidden_field :training_date %>
-  <%= f.hidden_field :training_menu_id %>
-  <%= f.hidden_field :list_id %>
-  <p>重量:<%= f.number_field :weight %></p>
-  <p>回数:<%= f.number_field :body %></p>
-  <p><%= f.submit "追加" %></p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 pt-5 mx-auto">
+      <p>部位:<%= @list.part %></p>
+      <p>種目:<%= @training_menu.item %></p>
+      <%= form_with model: @training, url: trainings_path, method: :post do |f| %>
+        <%= f.hidden_field :training_date, value: Date.current %>
+        <%= f.hidden_field :training_menu_id, value: @training_menu.id %>
+        <%= f.hidden_field :list_id, value: @list.id %>
+        <p>重量:<%= f.number_field :weight %></p>
+        <p>回数:<%= f.number_field :body %></p>
+        <p><%= f.submit "追加" %></p>
+      <% end %>      
+    </div>
+  </div>
+</div>
+

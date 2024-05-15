@@ -14,26 +14,46 @@
   <body>
     <header>
       <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-        <li>
-          <%= link_to "マイページ", user_path(current_user) %>
-        </li>
-        <li>
-          <%= link_to "目標設定", edit_user_path(current_user) %>
-        </li>
-        <li>
-          <%= link_to "トレーニング", new_training_path %>
-        </li>
-        <li>
-          <%= link_to "筋トレ一覧", trainings_path %>
-        </li>
-        <li>
-          <%= link_to "投稿一覧", posts_path %>
-        </li>
-        <% end %>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+          <div class="container">
+            <div class="row">
+              <div class="col-3">
+                <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+              </div>
+              <div class="col-3">
+                <li>
+                  <%= link_to "マイページ", user_path(current_user) %>
+                </li>
+              </div>
+              <div class="col-3">
+                <li>
+                  <%= link_to "目標設定", edit_user_path(current_user) %>
+                </li>
+              </div>
+              <div class="col-3">
+                <li>
+                  <%= link_to "トレーニング", new_training_path %>
+                </li>
+              </div>
+              <div class="col-3">
+                 <li>
+                  <%= link_to "筋トレ一覧", trainings_path %>
+                </li>
+              </div>
+              <div class="col-3">
+                <li>
+                  <%= link_to "投稿一覧", posts_path %>
+                </li>
+              </div>
+            </div>
+          </div>
+        </nav>
+      <% end %>
     </header>
-    <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
   </body>
 </html>

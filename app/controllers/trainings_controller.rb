@@ -1,11 +1,10 @@
 class TrainingsController < ApplicationController
   def show
     @training = Training.find(params[:id])
-    #@trainings = Training.all
   end
 
   def index
-    @training = Training.all
+    @training = Training.new
     @lists = List.all
   end
 
@@ -23,7 +22,10 @@ class TrainingsController < ApplicationController
   end
 
   def new_detail
-    @training = Training.new(training_params)
+    @training = Training.new
+    @list = List.find(params[:training][:list_id])
+    @training_menu = TrainingMenu.find(params[:training][:training_menu_id])
+    
   end
 
   def create
@@ -34,9 +36,9 @@ class TrainingsController < ApplicationController
   end
 
   def destroy
-    training = Training.find(params[:id])
-    training.destroy
-    redirect_to training_path(training)
+    @training = Training.find(params[:id])
+    @training.destroy
+    redirect_to training_path(@training)
   end
 
   def update

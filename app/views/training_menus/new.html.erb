@@ -1,5 +1,14 @@
-<%= form_with model: @menu do |f| %>
-  <%= f.collection_select :list_id, @lists, :id, :part, {}, {} %>
-  <p>種目:<%= f.text_field :item %></p>
-  <%= f.submit "作成" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 pt-5 mx-auto">
+      <div class="form-group">
+        <%= form_with model: @menu do |f| %>
+          <%= f.collection_select :list_id, @lists, :id, :part, {}, {} %>
+          <p>種目:<%= f.text_field :item, class: "form-control item" %></p>
+          <%= f.submit "作成" %>
+        <% end %>        
+      </div>
+    </div>
+  </div>
+</div>
+

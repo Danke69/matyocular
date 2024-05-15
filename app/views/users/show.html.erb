@@ -1,17 +1,41 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <h4>プロフィール</h4>
-  <h5><%= @user.introduction %></h5>
-  <h4>目標</h4>
-  <h5><%= @user.goal %></h5>
+<div class="container">
+  <div class="row">
+    <div class="col-3 pt-5">
+      <h2>User info</h2>
+      <table class="table">
+        <th><%= image_tag @user.get_profile_image(100,100) %></th>
+        <tbody>
+          <tr>
+            <th><p>名前</p></th>
+            <th><%= @user.name %></th>
+          </tr>
+            <th><p>プロフィール</p></th>
+            <th><%= @user.introduction %></th>
+          </tr>
+          <tr>
+            <th>目標</th>
+            <th><%= @user.goal %></th>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "投稿する", new_post_path %>
+    </div>
+    <div class="col-9 pt-5">
+      <% @posts.each do |post| %>
+        <tbody>
+          <tr>
+            <th><p><%= post.body %></p></th>
+            <th>
+              <% if @user == current_user %>
+                <%= button_to "削除", post_path(post), method: :delete %>
+              <% end %>          
+            </th>
+          </tr>
+        </tbody>
+      <% end %>  
+    </div>    
+  </div>
 </div>
 
-<% @posts.each do |post| %>
-  <p><%= post.body %></p>
-  <% if @user == current_user %>
-    <%= button_to "削除", post_path(post), method: :delete %>
-  <% end %>
-<% end %>
 
-<%= link_to "投稿する", new_post_path %>
+

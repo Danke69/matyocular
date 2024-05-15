@@ -17,12 +17,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: 'homes#top'
-  get 'homes/about'
+
   resources :users, only: [:show, :edit, :update, :destroy]
-  resources :posts, only: [:index, :new, :show, :destroy, :create]
-  resources :lists, only: [:index, :show, :new, :destroy, :create]
-  resources :part, only: [:index, :show, :new, :destroy]
-  resources :training_menus, only: [:new, :destroy, :create, :show]
+  resources :posts, only: [:index, :new, :destroy, :create]
+  resources :lists, only: [:new, :destroy, :create]
+  resources :training_menus, only: [:new, :destroy, :create]
   resources :trainings, only: [:show, :new, :destroy, :index, :create, :update] do
     collection do
       get :new_menu

@@ -10,8 +10,8 @@ class TrainingsController < ApplicationController
 
   def new
     @training = Training.new(training_date: Date.today)
-    @lists = List.all
-    @menus = TrainingMenu.all
+    @lists = current_user.lists
+    @menus = current_user.training_menus
   end
 
   def new_menu
@@ -25,7 +25,7 @@ class TrainingsController < ApplicationController
     @training = Training.new
     @list = List.find(params[:training][:list_id])
     @training_menu = TrainingMenu.find(params[:training][:training_menu_id])
-    
+
   end
 
   def create
@@ -38,7 +38,7 @@ class TrainingsController < ApplicationController
   def destroy
     @training = Training.find(params[:id])
     @training.destroy
-    redirect_to training_path(@training)
+    redirect_to trainings_path
   end
 
   def update

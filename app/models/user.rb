@@ -6,7 +6,9 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :trainings, dependent: :destroy
-
+  has_many :lists, dependent: :destroy
+  has_many :training_menus, dependent: :destroy
+  
   has_one_attached :profile_image
 
   def get_profile_image(width, height)

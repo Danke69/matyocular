@@ -6,6 +6,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user = current_user
     @list.save
     redirect_to new_training_menu_path
   end

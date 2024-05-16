@@ -6,6 +6,7 @@ class TrainingMenusController < ApplicationController
 
   def create
     @menu = TrainingMenu.new(training_menu_params)
+    @menu.user = current_user
     @menu.save
     redirect_to trainings_path
   end
@@ -16,7 +17,7 @@ class TrainingMenusController < ApplicationController
     redirect_to trainings_path
   end
 
-  
+
 
   private
 

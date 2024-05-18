@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     resources :users, only: [:destroy, :show, :index]
     resources :posts, only: [:destroy, :index]
     resources :dashboards, only: [:index, :create,]
-    resources :training_lists, only: [:new, :create]
-    resources :training_menus, only: [:new, :create]
   end
 
   devise_for :users, controllers: {

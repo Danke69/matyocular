@@ -1,7 +1,7 @@
 class TrainingMenusController < ApplicationController
   def new
     @menu = TrainingMenu.new
-    @lists = List.all
+    @lists = current_user.lists
   end
 
   def create

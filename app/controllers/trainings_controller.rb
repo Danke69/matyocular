@@ -5,7 +5,7 @@ class TrainingsController < ApplicationController
 
   def index
     @training = Training.new
-    @lists = List.all
+    @lists = current_user.lists
   end
 
   def new

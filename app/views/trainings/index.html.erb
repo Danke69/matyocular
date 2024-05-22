@@ -27,27 +27,33 @@
   <% @lists.each do |list| %>
     <thead>
       <tr>
-        <th>
-          <h4><%= list.part %></h4>
+        <th class="d-flex p-2">
+          <h4 class="pr-3"><%= list.part %></h4>
           <%= button_to "削除", list_path(list), method: :delete %>
         </th>
       </tr>
     </thead>
+
+
     <tbody>
-      <tr>
-        <td>
-          <% list.training_menus.each do |menu| %>
+      <% list.training_menus.each do |menu| %>
+        <tr>
+          <td>
             <%= menu.item %>
+          </td>
+          <td>
             <%= form_with model: @training, url: new_detail_trainings_path do |f| %>
               <%= f.hidden_field :training_date, value: Date.current %>
               <%= f.hidden_field :training_menu_id, value: menu.id %>
               <%= f.hidden_field :list_id, value: list.id %>
               <%= f.submit "鍛える" %>
             <% end %>
+          </td>
+          <td>
             <%= button_to "削除", training_menu_path(menu), method: :delete %>
-          <% end %>
-        </td>
-      </tr>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   <% end %>
 </table>
